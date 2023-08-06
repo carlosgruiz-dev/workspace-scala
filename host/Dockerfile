@@ -8,7 +8,7 @@ RUN dnf update -y \
     && dnf clean all \
     && useradd --uid $USER_UID $USERNAME \
     && usermod -aG wheel $USERNAME \
-    && echo 'dont-do-this-at-prod' | passwd --stdin $USERNAME
+    && echo 'dont-do-this-in-prod' | passwd --stdin $USERNAME
 
 USER $USERNAME
 EXPOSE 22 80 1313 3000 5000 8000 8080 9000
