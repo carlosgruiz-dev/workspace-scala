@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  host:
+    build: ./host
+  redis:
+    image: "redis:alpine"
