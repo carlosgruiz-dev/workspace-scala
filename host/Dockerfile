@@ -3,6 +3,7 @@ ARG USERNAME=carlos
 ARG USER_UID=1000   
 
 RUN dnf update -y \
+    && dnf group install "Development Tools" -y \
     && dnf install -y openssh sudo \
                       bash-completion vim tmux git \
     && dnf clean all \
