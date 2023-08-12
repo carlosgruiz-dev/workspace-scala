@@ -2,11 +2,10 @@ FROM rockylinux:9
 ARG USERNAME=carlos
 ARG USER_UID=1000   
 
-RUN dnf update -y 
-RUN dnf install -y openssh sudo bash-completion vim tmux git
+RUN dnf update -y
+RUN dnf group install "Development Tools" -y && dnf install -y openssh sudo bash-completion vim tmux git
 RUN dnf clean all
-RUN useradd --uid $USER_UID $USERNAME 
-RUN usermod -aG wheel $USERNAME 
+RUN useradd --uid $USER_UID $USERNAME && usermod -aG wheel $USERNAME 
 RUN echo 'dont-do-this-in-prod' | passwd --stdin $USERNAME
 WORKDIR /home/$USERNAME
 USER $USERNAME
